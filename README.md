@@ -9,6 +9,45 @@
 
 ---
 
+## 🚀 安装为 Agent 技能
+
+### OpenClaw / Codex
+```bash
+npx skills add Tufei8001/xian-work-watch
+```
+安装后，输入公司名称即可查询不良记录。
+
+### Claude Desktop
+在 `claude_desktop_config.json` 中添加:
+```json
+{
+  "mcpServers": {
+    "xian-work-watch": {
+      "command": "node",
+      "args": ["/path/to/xian-work-watch/mcp-server.js"]
+    }
+  }
+}
+```
+然后问 Claude: "查一下西安XX科技有没有劳动纠纷"
+
+### Cursor / Windsurf
+在 Cursor Settings → MCP 中添加:
+- **名称**: xian-work-watch
+- **类型**: command
+- **命令**: `node /path/to/xian-work-watch/mcp-server.js`
+
+### 直接 CLI 使用
+```bash
+node scripts/search.js 公司名
+node scripts/search.js --stats
+node scripts/search.js --list
+```
+
+---
+
+---
+
 ## 不良类型
 
 | 分类 | 标签 | 说明 |
