@@ -68,4 +68,3 @@
 
 伯图大数据西安分公司 | 未知 | 其他 | 2019-05 | 面试时明确告知996工作制 | [Boss直聘截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E4%BC%AF%E5%9B%BE%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg)
 
-广西安辰信息产业股份有限公司 | 未知 | 其他 | 2019-04 | 大小周工作制 | [考勤截图](https://github.com/euxeuxeux/996.ICU/blob/master/blacklist/img/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20190429115610.png)
