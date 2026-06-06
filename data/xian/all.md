@@ -54,10 +54,18 @@
 
 ---
 
-## 其他
+## 其他（超时加班/996）
 
 ```
 公司名 | 区 | 标签 | 时间 | 描述 | 证据
 ```
 
-*暂无记录，等你来提交。*
+易点天下 | 高新区 | 其他 | 2019 | 9116/9117工作制，每天下午6点开始开会，经常通宵。管理层有华为背景，管理风格激进 | [工作截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E6%98%93%E7%82%B9%E5%A4%A9%E4%B8%8B.jpeg)
+
+中软国际科技服务有限公司 | 未知 | 其他 | 2019-04 | 996工作制 | [猎聘网](https://jobs.zhaopin.com/CC508620126J00303154805.htm)
+
+华勤通讯技术有限公司 | 高新区 | 其他 | 2019-04 | 996工作制（上海/西安均有办公点） | [看准网](https://www.kanzhun.com/gso238619.html) · [知乎](https://www.zhihu.com/question/49628909/answer/522467068)
+
+伯图大数据西安分公司 | 未知 | 其他 | 2019-05 | 面试时明确告知996工作制 | [Boss直聘截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E4%BC%AF%E5%9B%BE%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg)
+
+广西安辰信息产业股份有限公司 | 未知 | 其他 | 2019-04 | 大小周工作制 | [考勤截图](https://github.com/euxeuxeux/996.ICU/blob/master/blacklist/img/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20190429115610.png)
