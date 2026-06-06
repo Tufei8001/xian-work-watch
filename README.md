@@ -1,63 +1,64 @@
 # 西安求职避坑指南 · xian-work-watch
 
-收集西安本地打工人分享的不良招聘/用工信息，互帮互助。
+> 西安打工人互助数据库 —— 搜公司，看有没有坑。
 
-**本项目不制造焦虑，不放地图炮。只做三件事：**
-1. 记录已发生的事实
-2. 附上可验证的证据
-3. 引用对应的法律条款
+## 📌 这个项目是干嘛的
 
----
+曝光西安本地不良招聘和用工行为。不限于 IT 行业，餐饮、销售、教育、制造业……只要是真实踩坑，都收录。
 
-## 🌐 在线查询（推荐 · 零门槛）
+**只记三样东西：** 已发生的事实 + 可验证的证据 + 对应的法律条款。
 
-打开浏览器访问:
-**https://tufei8001.github.io/xian-work-watch**
+已有数据：**4 条**（持续收集中）
 
-输入公司名即可查询，无需安装任何东西，手机上也能用。
+## 🔍 查询方式
 
----
+### 1. 网页搜索（零门槛 · 推荐）
 
-## 🚀 安装为 Agent 技能
+👉 **https://tufei8001.github.io/xian-work-watch**
 
-### OpenClaw / Codex
+输入公司名，一秒出结果。手机上也能用。
+
+### 2. 评论区提交
+
+你踩过坑？按这个格式回复在我的小红书/抖音评论区，我会定期收录：
+
+```
+📌 公司名称：
+📍 在哪个区：
+⚠️ 什么问题：欠薪/虚假招聘/社保缺失/裁员/竞业/其他
+📅 发生时间：
+📝 详细描述：
+```
+
+### 3. 程序员 / AI 用户
+
 ```bash
-npx skills add Tufei8001/xian-work-watch
-```
-安装后，输入公司名称即可查询不良记录。
+# 一行命令查公司
+npx xian-work-watch 易点天下
 
-### Claude Desktop
-在 `claude_desktop_config.json` 中添加:
-```json
-{
-  "mcpServers": {
-    "xian-work-watch": {
-      "command": "node",
-      "args": ["/path/to/xian-work-watch/mcp-server.js"]
-    }
-  }
-}
-```
-然后问 Claude: "查一下西安XX科技有没有劳动纠纷"
-
-### Cursor / Windsurf
-在 Cursor Settings → MCP 中添加:
-- **名称**: xian-work-watch
-- **类型**: command
-- **命令**: `node /path/to/xian-work-watch/mcp-server.js`
-
-### 直接 CLI 使用
-```bash
-node scripts/search.js 公司名
-node scripts/search.js --stats
-node scripts/search.js --list
+# Claude Desktop / Cursor MCP 插件
+# 搜「xian-work-watch」直达文档
 ```
 
 ---
 
 ---
 
-## 不良类型
+## 📋 当前收录
+
+| 公司 | 区域 | 问题 | 时间 |
+|------|------|------|------|
+| 易点天下 | 高新区 | 9116/007，晚6开会，常通宵 | 2019 |
+| 中软国际科技服务有限公司 | 未知 | 996 工作制 | 2019-04 |
+| 华勤通讯技术有限公司 | 高新区 | 996（上海/西安） | 2019-04 |
+| 伯图大数据西安分公司 | 未知 | 面试明确996 | 2019-05 |
+
+> 数据来源：[996.ICU](https://github.com/996icu/996.ICU)，持续收集中。
+> 在评论区按模板回复即可提交新记录。
+
+---
+
+## ⚖️ 不良类型
 
 | 分类 | 标签 | 说明 |
 |------|------|------|
