@@ -1,0 +1,79 @@
+{
+  "records": [
+    {
+      "company": "易点天下",
+      "district": "高新区",
+      "tags": "其他",
+      "time": "2019",
+      "description": "9116/9117工作制，每天下午6点开始开会，经常通宵。管理层有华为背景，管理风格激进",
+      "evidence": "[工作截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E6%98%93%E7%82%B9%E5%A4%A9%E4%B8%8B.jpeg)",
+      "category": "其他（超时加班/996）"
+    },
+    {
+      "company": "中软国际科技服务有限公司",
+      "district": "未知",
+      "tags": "其他",
+      "time": "2019-04",
+      "description": "996工作制",
+      "evidence": "[猎聘网](https://jobs.zhaopin.com/CC508620126J00303154805.htm)",
+      "category": "其他（超时加班/996）"
+    },
+    {
+      "company": "华勤通讯技术有限公司",
+      "district": "高新区",
+      "tags": "其他",
+      "time": "2019-04",
+      "description": "996工作制（上海/西安均有办公点）",
+      "evidence": "[看准网](https://www.kanzhun.com/gso238619.html) · [知乎](https://www.zhihu.com/question/49628909/answer/522467068)",
+      "category": "其他（超时加班/996）"
+    },
+    {
+      "company": "伯图大数据西安分公司",
+      "district": "未知",
+      "tags": "其他",
+      "time": "2019-05",
+      "description": "面试时明确告知996工作制",
+      "evidence": "[Boss直聘截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E4%BC%AF%E5%9B%BE%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg)",
+      "category": "其他（超时加班/996）"
+    }
+  ],
+  "index": [
+    {
+      "c": "易点天下",
+      "d": "高新区",
+      "t": "其他",
+      "tm": "2019",
+      "desc": "9116/9117工作制，每天下午6点开始开会，经常通宵。管理层有华为背景，管理风格激进",
+      "cat": "其他（超时加班/996）",
+      "evidence": "[工作截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E6%98%93%E7%82%B9%E5%A4%A9%E4%B8%8B.jpeg)"
+    },
+    {
+      "c": "中软国际科技服务有限公司",
+      "d": "未知",
+      "t": "其他",
+      "tm": "2019-04",
+      "desc": "996工作制",
+      "cat": "其他（超时加班/996）",
+      "evidence": "[猎聘网](https://jobs.zhaopin.com/CC508620126J00303154805.htm)"
+    },
+    {
+      "c": "华勤通讯技术有限公司",
+      "d": "高新区",
+      "t": "其他",
+      "tm": "2019-04",
+      "desc": "996工作制（上海/西安均有办公点）",
+      "cat": "其他（超时加班/996）",
+      "evidence": "[看准网](https://www.kanzhun.com/gso238619.html) · [知乎](https://www.zhihu.com/question/49628909/answer/522467068)"
+    },
+    {
+      "c": "伯图大数据西安分公司",
+      "d": "未知",
+      "t": "其他",
+      "tm": "2019-05",
+      "desc": "面试时明确告知996工作制",
+      "cat": "其他（超时加班/996）",
+      "evidence": "[Boss直聘截图](https://github.com/996icu/996.ICU/blob/master/blacklist/img/%E4%BC%AF%E5%9B%BE%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg"
+    }
+  ],
+  "updated": "2026-06-06T09:04:41.105Z"
+}

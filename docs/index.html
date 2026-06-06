@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西安求职避坑 · 公司查询</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+         background: #f5f5f5; color: #333; min-height: 100vh; }
+  .container { max-width: 640px; margin: 0 auto; padding: 20px 16px; }
+  
+  /* Header */
+  .header { text-align: center; padding: 32px 0 20px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+  .header p { font-size: 13px; color: #888; margin-top: 6px; line-height: 1.6; }
+
+  /* Search */
+  .search-box { position: relative; margin: 16px 0; }
+  .search-box input {
+    width: 100%; padding: 12px 16px 12px 42px; font-size: 16px;
+    border: 2px solid #e0e0e0; border-radius: 12px; outline: none;
+    background: #fff; transition: border .2s;
+  }
+  .search-box input:focus { border-color: #ff4757; }
+  .search-box .icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: #999; }
+  .search-box .clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; font-size: 18px; color: #ccc; cursor: pointer; display: none; }
+  .search-box .clear:hover { color: #999; }
+
+  /* Filters */
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .filter-tag { padding: 4px 12px; border-radius: 20px; font-size: 12px; border: 1.5px solid #ddd;
+    background: #fff; cursor: pointer; transition: all .2s; color: #666; }
+  .filter-tag.active { background: #ff4757; color: #fff; border-color: #ff4757; }
+
+  /* Stats */
+  .stats { font-size: 13px; color: #999; margin-bottom: 12px; text-align: center; }
+
+  /* Results */
+  .result-card {
+    background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06); transition: box-shadow .2s;
+  }
+  .result-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .result-card .name { font-size: 16px; font-weight: 600; color: #1a1a1a; }
+  .result-card .meta { font-size: 12px; color: #999; margin-top: 4px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .result-card .meta span { }
+  .result-card .tag {
+    display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px;
+    background: #fff0f0; color: #ff4757; font-weight: 500;
+  }
+  .result-card .desc { font-size: 14px; color: #555; margin-top: 8px; line-height: 1.6; }
+  .result-card .evidence { margin-top: 8px; }
+  .result-card .evidence a { font-size: 12px; color: #4a90d9; text-decoration: none; }
+  .result-card .evidence a:hover { text-decoration: underline; }
+
+  /* Empty state */
+  .empty { text-align: center; padding: 48px 0; color: #bbb; }
+  .empty .big { font-size: 48px; margin-bottom: 12px; }
+  .empty p { font-size: 14px; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 24px 0 40px; font-size: 12px; color: #ccc; }
+  .footer a { color: #999; text-decoration: none; }
+  .footer a:hover { color: #666; }
+
+  /* Loading */
+  .loading { text-align: center; padding: 48px 0; color: #999; font-size: 14px; }
+
+  /* Submit CTA */
+  .submit-cta { background: #fff; border-radius: 12px; padding: 16px; margin: 20px 0; 
+    border: 1.5px dashed #ddd; text-align: center; }
+  .submit-cta p { font-size: 13px; color: #888; line-height: 1.6; }
+  .submit-cta .template { font-size: 12px; color: #666; margin-top: 8px; background: #f9f9f9;
+    padding: 10px; border-radius: 8px; text-align: left; line-height: 1.8; font-family: monospace; }
+
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a1a; color: #e0e0e0; }
+    .header h1 { color: #f0f0f0; }
+    .search-box input { background: #2a2a2a; border-color: #3a3a3a; color: #e0e0e0; }
+    .result-card { background: #2a2a2a; }
+    .result-card .name { color: #f0f0f0; }
+    .result-card .desc { color: #aaa; }
+    .submit-cta { background: #2a2a2a; border-color: #3a3a3a; }
+    .submit-cta .template { background: #222; }
+    .filter-tag { background: #2a2a2a; border-color: #3a3a3a; color: #aaa; }
+    .filter-tag.active { background: #ff4757; color: #fff; border-color: #ff4757; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🦞 西安求职避坑</h1>
+    <p>输入公司名称，查询不良用工记录<br>数据来源：打工人真实投稿</p>
+  </div>
+
+  <div class="search-box">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="搜公司名、区域、问题…" autocomplete="off">
+    <button class="clear" id="clearBtn">✕</button>
+  </div>
+
+  <div class="filters" id="filters"></div>
+  <div class="stats" id="stats"></div>
+  <div id="results"></div>
+  <div id="empty" class="empty" style="display:none">
+    <div class="big">🔍</div>
+    <p>暂未收录这家公司</p>
+    <p style="font-size:12px;margin-top:4px">评论区或私信提交，下次更新时加入</p>
+  </div>
+
+  <div class="submit-cta">
+    <p><strong>📮 你有遇到不良公司？</strong></p>
+    <p style="font-size:12px">在我的小红书/抖音评论区回复，我会定期收录👇</p>
+    <div class="template">
+📌 公司名称：<br>
+📍 在哪个区：<br>
+⚠️ 什么问题：欠薪/虚招/社保/裁员/竞业<br>
+📅 发生时间：<br>
+📝 描述：
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/Tufei8001/xian-work-watch" target="_blank">GitHub 开源项目</a>
+     · 数据持续更新
+  </div>
+</div>
+
+<script>
+const TAG_COLORS = {
+  '欠薪': '#ff4757', '虚招': '#ff6348', '社保': '#ffa502',
+  '裁员': '#2ed573', '竞业': '#1e90ff', '其他': '#a4b0be',
+};
+
+let allRecords = [];
+let activeTag = '全部';
+
+function escapeHtml(t) {
+  const d = document.createElement('div');
+  d.textContent = t;
+  return d.innerHTML;
+}
+
+function formatEvidence(ev) {
+  if (!ev) return '';
+  // Check for evidence URLs
+  const urlRegex = /https?:\/\/[^\s]+/g;
+  const links = ev.match(urlRegex);
+  if (!links) return '';
+
+  return links.map(url => {
+    const label = url.includes('github') ? '截图证据' :
+                  url.includes('zhaopin') || url.includes('zhipin') ? '招聘信息' :
+                  url.includes('zhihu') ? '知乎讨论' :
+                  url.includes('kanzhun') ? '看准网' :
+                  url.includes('maimai') ? '脉脉' : '证据链接';
+    return `<a href="${escapeHtml(url)}" target="_blank" rel="nofollow">🔗 ${label}</a>`;
+  }).join(' · ');
+}
+
+function renderCards(records) {
+  const container = document.getElementById('results');
+  document.getElementById('empty').style.display = records.length === 0 ? 'block' : 'none';
+
+  if (records.length === 0) { container.innerHTML = ''; return; }
+
+  container.innerHTML = records.map(r => {
+    const tagColors = r.tags.split(/[\/,、\s]/).map(t => TAG_COLORS[t.trim()] || '#a4b0be').filter(Boolean);
+    return `<div class="result-card">
+      <div class="name">${escapeHtml(r.company)}</div>
+      <div class="meta">
+        ${r.district ? `<span>📍 ${escapeHtml(r.district)}</span>` : ''}
+        ${r.time ? `<span>📅 ${escapeHtml(r.time)}</span>` : ''}
+        <span class="tag" style="background:${tagColors[0] || '#a4b0be'}20;color:${tagColors[0] || '#a4b0be'}">
+          ${escapeHtml(r.tags || r.category || '其他')}
+        </span>
+      </div>
+      <div class="desc">${escapeHtml(r.description)}</div>
+      ${r.evidence ? `<div class="evidence">${formatEvidence(r.evidence)}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function filterRecords(query, tag) {
+  const q = query.toLowerCase().trim();
+  return allRecords.filter(r => {
+    // Filter by tag
+    if (tag !== '全部') {
+      const t = r.tags || r.category || '';
+      if (!t.includes(tag)) return false;
+    }
+    // Filter by query
+    if (!q) return true;
+    return (r.company && r.company.toLowerCase().includes(q)) ||
+           (r.district && r.district.toLowerCase().includes(q)) ||
+           (r.description && r.description.toLowerCase().includes(q)) ||
+           ((r.tags || r.category || '').toLowerCase().includes(q));
+  });
+}
+
+function updateUI() {
+  const query = document.getElementById('searchInput').value;
+  const results = filterRecords(query, activeTag);
+  renderCards(results);
+  
+  document.getElementById('clearBtn').style.display = query ? 'block' : 'none';
+
+  const total = allRecords.length;
+  const shown = results.length;
+  const stats = document.getElementById('stats');
+  if (total > 0 && !query && activeTag === '全部') {
+    stats.textContent = `共 ${total} 条记录`;
+  } else if (total > 0) {
+    stats.textContent = `找到 ${shown}/${total} 条`;
+  } else {
+    stats.textContent = '加载中…';
+  }
+}
+
+function updateFilters() {
+  const tagCount = {};
+  allRecords.forEach(r => {
+    const tags = (r.tags || r.category || '').split(/[\/,、\s]/);
+    tags.forEach(t => { if (t.trim()) tagCount[t.trim()] = (tagCount[t.trim()] || 0) + 1; });
+  });
+
+  const container = document.getElementById('filters');
+  container.innerHTML = '<span class="filter-tag' + (activeTag === '全部' ? ' active' : '') + '" data-tag="全部">全部</span>' +
+    Object.entries(tagCount).sort((a,b) => b[1] - a[1]).map(([tag, count]) =>
+      `<span class="filter-tag${activeTag === tag ? ' active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)} ${count}</span>`
+    ).join('');
+
+  container.querySelectorAll('.filter-tag').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tag').forEach(e => e.classList.remove('active'));
+      el.classList.add('active');
+      activeTag = el.dataset.tag;
+      updateUI();
+    });
+  });
+}
+
+// Load data
+(async function() {
+  try {
+    let resp = await fetch('data.json?_=' + Date.now());
+    if (!resp.ok) resp = await fetch('https://raw.githubusercontent.com/Tufei8001/xian-work-watch/main/docs/data.json?_=' + Date.now());
+    const json = await resp.json();
+    allRecords = json.records || json.index || [];
+    updateFilters();
+    updateUI();
+  } catch(e) {
+    document.getElementById('results').innerHTML =
+      '<div class="loading">⚠️ 数据加载失败，请刷新重试</div>';
+    document.getElementById('stats').textContent = '';
+  }
+})();
+
+// Search events
+document.getElementById('searchInput').addEventListener('input', updateUI);
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  updateUI();
+});
+</script>
+</body>
+</html>

@@ -9,6 +9,15 @@
 
 ---
 
+## 🌐 在线查询（推荐 · 零门槛）
+
+打开浏览器访问:
+**https://tufei8001.github.io/xian-work-watch**
+
+输入公司名即可查询，无需安装任何东西，手机上也能用。
+
+---
+
 ## 🚀 安装为 Agent 技能
 
 ### OpenClaw / Codex
